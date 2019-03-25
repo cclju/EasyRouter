@@ -15,6 +15,6 @@ public class RouterUseInfoActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.easyrouter_useinfo);
+        setContentView(R.layout.activity_module_interact);
     }
 }

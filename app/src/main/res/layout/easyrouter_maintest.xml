@@ -31,6 +31,13 @@
         android:text="普通跳转" />
 
     <Button
+        android:id="@+id/bt_normalsubjump"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="普通跳转 - lib" />
+
+    <Button
         android:id="@+id/bt_jumpwithinteractor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

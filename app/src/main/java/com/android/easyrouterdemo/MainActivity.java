@@ -27,6 +27,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         setContentView(R.layout.easyrouter_maintest);
         findViewById(R.id.bt_useinfo).setOnClickListener(this);
         findViewById(R.id.bt_normaljump).setOnClickListener(this);
+        findViewById(R.id.bt_normalsubjump).setOnClickListener(this);
         findViewById(R.id.bt_jumpwithinteractor).setOnClickListener(this);
         findViewById(R.id.bt_callservice).setOnClickListener(this);
         findViewById(R.id.bt_addfragment).setOnClickListener(this);
@@ -43,6 +44,14 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             case R.id.bt_normaljump:
                 // Example for normal jump
                 EasyRouter.open("easyrouter://routertest?name=liuzhao&company=58", new DefaultRouterCallBack());
+//                EasyRouter.with("easyrouter://routertest")
+//                        .withString("name", "liuzhao")
+//                        .withString("company", "58")
+//                        .open();
+                break;
+
+            case R.id.bt_normalsubjump:
+                EasyRouter.open("easyrouter://moduleInteract");
                 break;
 
             case R.id.bt_jumpwithinteractor:
