@@ -3,7 +3,7 @@ package com.android.easyrouter.service;
 import android.content.Context;
 
 /**
- * Created by liuzhao on 2017/9/19.
+ * 配置不同模块暴露方法，不同模块需要实现各自的方法
  */
 
 public interface BaseModuleService extends IBaseModuleService {

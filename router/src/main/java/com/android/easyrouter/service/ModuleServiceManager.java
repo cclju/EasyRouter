@@ -4,8 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by liuzhao on 2017/08/06.
- * 各个Module之间交互的管理者
+ * 各个Module之间方法交互的管理者
  */
 public class ModuleServiceManager {
 

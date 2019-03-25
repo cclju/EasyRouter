@@ -28,13 +28,20 @@ import java.util.Set;
  * Created by liuzhao on 16/10/21.
  */
 public class ActivityDispatcher implements IActivityDispatcher {
+
     private static volatile ActivityDispatcher sActivityDispatcher;
+
     public static String SCHEME = "easyrouter";
     private int DEFAULTVALUE = -1;
-    public static List<String> sModuleNames = new ArrayList<String>();// store module names
-    private HashMap<String, Class> mRealActivityMaps = new HashMap<String, Class>();// store the mapping of strings and class
+
+    public static List<String> sModuleNames = new ArrayList<String>(); // store module names
+
+    private HashMap<String, Class> mRealActivityMaps = new HashMap<String, Class>(); // store the mapping of strings and class
+
     private static IRouterCallBack sDefaultRouterCallBack;
+
     private static List<IInterceptor> sRealInterceptors = new ArrayList<IInterceptor>();// store the interceptor for UI Action
+
     private static final String CHARSET = "UTF-8";//code character set
 
     private ActivityDispatcher() {
@@ -108,7 +115,7 @@ public class ActivityDispatcher implements IActivityDispatcher {
         Object object = null;
         IRouterCallBack routerCallBack = sDefaultRouterCallBack;
         try {
-            if (TextUtils.isEmpty(intentWrapper.mUrl) || !canOpen(intentWrapper.mUrl)) {
+            if (TextUtils.isEmpty(intentWrapper.mUrl)) {
                 throw new RuntimeException("EasyRouter's url mustn't be null");
             }
             if (!canOpen(intentWrapper.mUrl)) {

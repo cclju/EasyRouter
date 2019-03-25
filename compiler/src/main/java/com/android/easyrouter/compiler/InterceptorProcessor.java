@@ -56,6 +56,7 @@ public class InterceptorProcessor extends AbstractProcessor {
         Map<String, String> options = processingEnv.getOptions();
         if (MapUtils.isNotEmpty(options)) {
             moduleName = options.get(CompilerConstant.KEY_MODULE_NAME);
+            System.out.println("InterceptorProcessor init moduleName = " + moduleName);
         }
     }
 

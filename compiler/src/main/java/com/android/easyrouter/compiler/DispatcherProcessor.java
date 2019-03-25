@@ -38,7 +38,11 @@ import javax.tools.Diagnostic;
 import static com.squareup.javapoet.JavaFile.builder;
 
 /**
- * Created by liuzhao on 2017/7/27.
+ * APT
+ *
+ * 1) 生成类 - 自动生成类和方法
+ * 2) 生成路由
+ *
  */
 @SupportedOptions(CompilerConstant.KEY_MODULE_NAME)
 @AutoService(Processor.class)
@@ -60,6 +64,7 @@ public class DispatcherProcessor extends AbstractProcessor {
         Map<String, String> options = processingEnv.getOptions();
         if (MapUtils.isNotEmpty(options)) {
             moduleName = options.get(CompilerConstant.KEY_MODULE_NAME);
+            System.out.println("DispatcherProcessor init moduleName = " + moduleName);
             set.add(moduleName);
         }
     }
@@ -80,10 +85,13 @@ public class DispatcherProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
+
+        Set<? extends Element> modulesList = roundEnv.getElementsAnnotatedWith(DispatcherModules.class);
+
         Set<? extends Element> elementDispatchers = roundEnv.getElementsAnnotatedWith(DisPatcher.class);
         Set<? extends Element> elementModuleServices = roundEnv.getElementsAnnotatedWith(ModuleService.class);
+
         String[] moduleNames = null;
-        Set<? extends Element> modulesList = roundEnv.getElementsAnnotatedWith(DispatcherModules.class);
         if (modulesList != null && modulesList.size() > 0) {
             Element modules = modulesList.iterator().next();
             moduleNames = modules.getAnnotation(DispatcherModules.class).value();
@@ -91,11 +99,15 @@ public class DispatcherProcessor extends AbstractProcessor {
         try {
             TypeSpec type = getRouterTableInitializer(elementDispatchers, elementModuleServices);
             if (type != null) {
+                // 生成类 - 自动生成类和方法
+                // e.g. build/generated/source/apt/debug/com/android/easyrouter/AutoCreateModuleActivityMap_{moduleName} implements IActivityInitMap
                 builder(CompilerConstant.AutoCreateDispatcherPackage, type).build().writeTo(mFiler);
             }
             if (moduleNames != null && moduleNames.length > 0) {
                 TypeSpec typeInit = generateModulesRouterInit(moduleNames);
                 if (typeInit != null) {
+                    // 生成路由
+                    // e.g. com.android.easyrouter.RouterInit
                     builder(CompilerConstant.AutoCreateDispatcherPackage, typeInit).build().writeTo(mFiler);
                 }
             }
@@ -145,6 +157,8 @@ public class DispatcherProcessor extends AbstractProcessor {
                         ClassName.get(Class.class));
         ParameterSpec mapParameterSpec = ParameterSpec.builder(mapTypeName, "activityMap")
                 .build();
+
+        // 自动生成方法 method = initActivityMap 注册模块
         MethodSpec.Builder routerInitBuilder = MethodSpec.methodBuilder("initActivityMap")
                 .addAnnotation(Override.class)
                 .addModifiers(Modifier.PUBLIC)
@@ -155,13 +169,12 @@ public class DispatcherProcessor extends AbstractProcessor {
             }
             DisPatcher router = element.getAnnotation(DisPatcher.class);
             String[] routerUrls = router.value();
-            if (routerUrls != null) {
-                for (String routerUrl : routerUrls) {
-                    routerInitBuilder.addStatement("activityMap.put($S, $T.class)", routerUrl, ClassName.get((TypeElement) element));
-                }
+            for (String routerUrl : routerUrls) {
+                routerInitBuilder.addStatement("activityMap.put($S, $T.class)", routerUrl, ClassName.get((TypeElement) element));
             }
         }
 
+        // method = initModuleService 注册服务
         MethodSpec.Builder initMethod = MethodSpec.methodBuilder("initModuleService")
                 .addModifiers(Modifier.PUBLIC, Modifier.STATIC);
         for (Element element : moduleServiceElements) {

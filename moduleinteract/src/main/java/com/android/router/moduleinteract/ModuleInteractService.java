@@ -14,6 +14,6 @@ public class ModuleInteractService implements BaseModuleService.ModuleInteractSe
 
     @Override
     public void runModuleInteract(Context context) {
-        Toast.makeText(context, "ModuleInteractService 服务调用成功！", 1).show();
+        Toast.makeText(context, "ModuleInteractService 服务调用成功！", Toast.LENGTH_LONG).show();
     }
 }
