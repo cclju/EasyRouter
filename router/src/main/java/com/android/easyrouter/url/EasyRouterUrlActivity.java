@@ -6,9 +6,6 @@ import android.os.Bundle;
 
 import com.android.easyrouter.EasyRouter;
 
-/**
- * Created by liuzhao on 2017/10/10.
- */
 
 public class EasyRouterUrlActivity extends Activity {
     @Override

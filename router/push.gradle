@@ -1,0 +1,115 @@
+
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+
+def GROUP = "com.caca.router"
+def VERSION = "1.2.5"
+def ARTIFACT_ID = 'router-api'
+
+group = GROUP
+version = VERSION
+
+def LABELS = ['aar', 'android', 'router']
+
+def siteUrl = 'https://github.com/cclju/EasyRouter'
+def gitUrl =  'https://github.com/cclju/EasyRouter.git'
+def issuesUrl = 'https://github.com/cclju/EasyRouter/issues'
+
+def packageName = 'android-router'
+def projectName = 'An Easy Base Router For Android - Router'
+def projectDescription = '简单、稳定、高性能的组件化路由框架'
+
+
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+
+                artifactId = ARTIFACT_ID
+
+                // Add your description here
+                description projectDescription
+                name projectName
+                url siteUrl
+                // Set your license
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'caijiawei'
+                        name 'caijiawei'
+                        email 'omg.cjw@gmail.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+//task javadoc(type: Javadoc) {
+//    options.encoding = 'UTF-8'
+//    source = 'src/main/java'
+//}
+
+task javadoc(type: Javadoc) {
+    options.encoding = 'UTF-8'
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    failOnError false
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = packageName
+        desc = projectName
+        websiteUrl = siteUrl
+        issueTrackerUrl = issuesUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        labels = LABELS
+        publish = true
+    }
+}
+
+
+// Console:
+
+//./gradlew install --info
+//./gradlew bintrayUpload --info
+
+//./gradlew javadocJar
+//./gradlew sourcesJar

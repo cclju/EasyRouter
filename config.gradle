@@ -1,0 +1,46 @@
+ext {
+    android = [
+            applicationId:"com.joybar.androidrouter",
+            compileSdkVersion: 26, // 28
+            targetSdkVersion : 26, // 28
+            minSdkVersion    : 14, // 15
+            buildToolsVersion: "26.0.2", // "28.0.3"
+            versionCode: 1,
+            versionName: "1.0.0"
+    ]
+
+
+    dependencies = [
+            supportv4 : "com.android.support:support-v4:26.1.0",
+            supportv7 : "com.android.support:appcompat-v7:26.1.0", // 28.0.0
+            recyclerviewv7 : 'com.android.support:recyclerview-v7:26.1.0',
+            constraintlayout :  'com.android.support.constraint:constraint-layout:1.0.2'
+    ]
+
+//    staging = [
+//            versionCode:101,
+//            versionName:'"1.0.1"',
+//
+//    ]
+//    production = [
+//            versionCode:101,
+//            versionName:'"1.0.1"'
+//    ]
+//
+//    isDebugType = false // module
+//    isPrintLog= false
+
+
+    // [Bintray1][step2]
+//    userOrg = 'caijiawei'
+//    groupId = 'com.cjw.router'
+//    uploadName = 'EasyRouter'
+//    publishVersion = '1.2.5'
+//    desc = '简单、稳定、高性能的组件化路由框架'
+//    website = 'https://github.com/cclju/EasyRouter'
+//    licences = ['Apache-2.0']
+
+}
+
+//project.ext.set("is_debug_type",  "false") //主APP
+//project.ext.set("is_print_log", "false")

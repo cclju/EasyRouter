@@ -3,9 +3,7 @@ package com.android.easyrouter.service;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * 各个Module之间方法交互的管理者
- */
+
 public class ModuleServiceManager {
 
 

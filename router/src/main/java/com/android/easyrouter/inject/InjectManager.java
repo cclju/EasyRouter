@@ -2,9 +2,6 @@ package com.android.easyrouter.inject;
 
 import com.android.easyrouter.util.EasyRouterLogUtils;
 
-/**
- * Created by liuzhao on 2017/10/10.
- */
 
 public class InjectManager {
     private static String injectSuffix = "_AutoAssign";

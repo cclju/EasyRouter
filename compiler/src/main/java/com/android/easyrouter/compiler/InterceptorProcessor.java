@@ -1,11 +1,10 @@
-package com.android.router.compiler;
+package com.android.easyrouter.compiler;
 
 import com.android.easyrouter.annotation.Interceptor;
 import com.android.easyrouter.compiler.constant.CompilerConstant;
 import com.google.auto.service.AutoService;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.MethodSpec;
-import com.squareup.javapoet.ParameterSpec;
 import com.squareup.javapoet.ParameterizedTypeName;
 import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
@@ -13,7 +12,6 @@ import com.squareup.javapoet.TypeSpec;
 import org.apache.commons.collections4.MapUtils;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -33,9 +31,6 @@ import javax.tools.Diagnostic;
 
 import static com.squareup.javapoet.JavaFile.builder;
 
-/**
- * Created by liuzhao on 2017/9/20.
- */
 
 @SupportedOptions(CompilerConstant.KEY_MODULE_NAME)
 @AutoService(Processor.class)

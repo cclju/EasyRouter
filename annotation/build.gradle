@@ -1,20 +1,28 @@
-apply plugin: 'java'
-apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'java-library'
+
+// [Bintray1][step3]
+//apply plugin: 'com.novoda.bintray-release'
+
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
 
-publish {
-    artifactId = 'router-annotation'
-    userOrg = rootProject.userOrg
-    groupId = rootProject.groupId
-    uploadName = rootProject.uploadName
-    publishVersion = rootProject.publishVersion
-    desc = rootProject.description
-    website = rootProject.website
-    licences = rootProject.licences
-}
+// [Bintray1][step4]
+//publish {
+//    artifactId = 'router-annotation'
+//    userOrg = rootProject.userOrg
+//    groupId = rootProject.groupId
+//    uploadName = rootProject.uploadName
+//    publishVersion = rootProject.publishVersion
+//    desc = rootProject.description
+//    website = rootProject.website
+//    licences = rootProject.licences
+//}
+
+// [Bintray2][step3]
+apply from: 'push.gradle'

@@ -11,10 +11,6 @@ import com.android.easyrouter.service.IBaseModuleService;
 import com.android.easyrouter.service.ModuleServiceManager;
 import com.android.easyrouter.util.EasyRouterLogUtils;
 
-/**
- * Created by liuzhao on 2017/9/12.
- * EasyRouter的调用类
- */
 
 public class EasyRouter {
 

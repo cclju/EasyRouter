@@ -2,9 +2,6 @@ package com.android.easyrouter.callback;
 
 import com.android.easyrouter.dispatcher.dispatcherimpl.model.IntentWrapper;
 
-/**
- * Created by liuzhao on 2017/9/17.
- */
 
 public interface IRouterCallBack {
     /**

@@ -1,4 +1,4 @@
-package com.android.router.compiler;
+package com.android.easyrouter.compiler;
 
 import com.android.easyrouter.annotation.AutoAssign;
 import com.android.easyrouter.compiler.util.ParamTypeKinds;
@@ -36,10 +36,6 @@ import javax.lang.model.util.Elements;
 import javax.lang.model.util.Types;
 import javax.tools.Diagnostic;
 
-
-/**
- * Created by liuzhao on 2017/10/09.
- */
 
 @AutoService(Processor.class)
 public class AutoAssiginProcessor extends AbstractProcessor {

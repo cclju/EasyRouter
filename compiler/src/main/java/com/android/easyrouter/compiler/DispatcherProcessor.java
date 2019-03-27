@@ -1,4 +1,4 @@
-package com.android.router.compiler;
+package com.android.easyrouter.compiler;
 
 import com.android.easyrouter.annotation.DisPatcher;
 import com.android.easyrouter.annotation.DispatcherModules;
@@ -37,12 +37,9 @@ import javax.tools.Diagnostic;
 
 import static com.squareup.javapoet.JavaFile.builder;
 
+
 /**
  * APT
- *
- * 1) 生成类 - 自动生成类和方法
- * 2) 生成路由
- *
  */
 @SupportedOptions(CompilerConstant.KEY_MODULE_NAME)
 @AutoService(Processor.class)
@@ -99,14 +96,12 @@ public class DispatcherProcessor extends AbstractProcessor {
         try {
             TypeSpec type = getRouterTableInitializer(elementDispatchers, elementModuleServices);
             if (type != null) {
-                // 生成类 - 自动生成类和方法
                 // e.g. build/generated/source/apt/debug/com/android/easyrouter/AutoCreateModuleActivityMap_{moduleName} implements IActivityInitMap
                 builder(CompilerConstant.AutoCreateDispatcherPackage, type).build().writeTo(mFiler);
             }
             if (moduleNames != null && moduleNames.length > 0) {
                 TypeSpec typeInit = generateModulesRouterInit(moduleNames);
                 if (typeInit != null) {
-                    // 生成路由
                     // e.g. com.android.easyrouter.RouterInit
                     builder(CompilerConstant.AutoCreateDispatcherPackage, typeInit).build().writeTo(mFiler);
                 }
@@ -158,7 +153,7 @@ public class DispatcherProcessor extends AbstractProcessor {
         ParameterSpec mapParameterSpec = ParameterSpec.builder(mapTypeName, "activityMap")
                 .build();
 
-        // 自动生成方法 method = initActivityMap 注册模块
+        // method = initActivityMap
         MethodSpec.Builder routerInitBuilder = MethodSpec.methodBuilder("initActivityMap")
                 .addAnnotation(Override.class)
                 .addModifiers(Modifier.PUBLIC)
@@ -174,7 +169,7 @@ public class DispatcherProcessor extends AbstractProcessor {
             }
         }
 
-        // method = initModuleService 注册服务
+        // method = initModuleService
         MethodSpec.Builder initMethod = MethodSpec.methodBuilder("initModuleService")
                 .addModifiers(Modifier.PUBLIC, Modifier.STATIC);
         for (Element element : moduleServiceElements) {

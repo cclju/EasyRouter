@@ -3,9 +3,6 @@ package com.android.easyrouter.util;
 import android.os.Handler;
 import android.os.Looper;
 
-/**
- * Created by liuzhao on 2017/9/30.
- */
 
 public class EasyRouterUtils {
 

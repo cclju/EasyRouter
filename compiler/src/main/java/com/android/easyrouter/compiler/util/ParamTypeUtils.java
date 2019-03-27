@@ -5,13 +5,9 @@ import javax.lang.model.type.TypeMirror;
 import javax.lang.model.util.Elements;
 import javax.lang.model.util.Types;
 
-import static com.android.easyrouter.compiler.constant.CompilerConstant.BYTE;
-import static com.android.easyrouter.compiler.constant.CompilerConstant.SHORT;
 import static com.android.easyrouter.compiler.constant.CompilerConstant.*;
 
-/**
- * Created by liuzhao on 2017/10/9.
- */
+
 public class ParamTypeUtils {
 
     private Types types;

@@ -1,17 +1,31 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+apply from: "config.gradle"
+
 buildscript {
     repositories {
-        maven {
-            url 'https://maven.google.com'
-        }
+//        maven {
+//            url 'https://maven.google.com'
+//        }
         jcenter()
         google()
-        maven { url 'https://maven.fabric.io/public' }
+//        maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.2'
-        classpath 'com.novoda:bintray-release:0.8.0'
+        classpath 'com.android.tools.build:gradle:3.0.0'
+
+        // Notice: if [Bintray1] not working, using [Bintray2] instead.
+
+        // [Bintray1][step1] if not working use the way below
+//        classpath 'com.novoda:bintray-release:0.8.0'
+
+
+        // [Bintray2][step1]
+        // condition: gradle:3.0.0 + gradle-4.1-all.zip
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+//        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.0.0"
+
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -20,11 +34,12 @@ buildscript {
 
 allprojects {
     repositories {
-        maven {
-            url 'https://maven.google.com'
-        }
+//        maven {
+//            url 'https://maven.google.com'
+//        }
         jcenter()
-        maven { url 'https://maven.fabric.io/public' }
+        google()
+//        maven { url 'https://maven.fabric.io/public' }
     }
     tasks.withType(Javadoc) {
         options{
@@ -39,12 +54,3 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-ext {
-    userOrg = 'liuzhaowy2007'
-    groupId = 'com.easyrouter'
-    uploadName = 'EasyRouter'
-    publishVersion = '1.2.3'
-    desc = '简单、稳定、高性能的组件化路由框架'
-    website = 'https://github.com/liuzhao2007/EasyRouter'
-    licences = ['Apache-2.0']
-}

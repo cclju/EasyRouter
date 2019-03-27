@@ -3,9 +3,6 @@ package com.android.easyrouter.callback;
 import com.android.easyrouter.dispatcher.dispatcherimpl.model.IntentWrapper;
 import com.android.easyrouter.util.EasyRouterLogUtils;
 
-/**
- * Created by liuzhao on 2017/9/17.
- */
 
 public class DefaultRouterCallBack implements IRouterCallBack {
     @Override

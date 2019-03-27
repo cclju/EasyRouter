@@ -17,9 +17,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by liuzhao on 2017/7/27.
- */
 
 public class IntentWrapper {
     public Intent mIntent;

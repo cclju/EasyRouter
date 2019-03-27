@@ -1,8 +1,5 @@
 package com.android.easyrouter.compiler.constant;
 
-/**
- * Created by liuzhao on 2017/7/29.
- */
 
 public class CompilerConstant {
     public static final String KEY_MODULE_NAME = "moduleName";

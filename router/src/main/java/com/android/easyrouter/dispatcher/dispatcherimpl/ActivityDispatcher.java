@@ -24,9 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Created by liuzhao on 16/10/21.
- */
+
 public class ActivityDispatcher implements IActivityDispatcher {
 
     private static volatile ActivityDispatcher sActivityDispatcher;
@@ -285,12 +283,6 @@ public class ActivityDispatcher implements IActivityDispatcher {
         this.SCHEME = scheme;
     }
 
-    /**
-     * 对Url进行编码；
-     *
-     * @param url
-     * @return
-     */
     private static String encodeUrl(String url) {
         String realUrl = url;
         try {
@@ -314,7 +306,6 @@ public class ActivityDispatcher implements IActivityDispatcher {
         String currentHost = null;
         int currentPathSegmentSize = 0;
 
-        //此处scheme已经校验；放心使用。
         for (String currentCheckUrl : mRealActivityMaps.keySet()) {
             currentUri = Uri.parse(currentCheckUrl);
             currentHost = currentUri.getHost();

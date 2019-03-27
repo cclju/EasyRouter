@@ -8,10 +8,6 @@ import com.android.easyrouter.util.EasyRouterLogUtils;
 
 import java.util.List;
 
-/**
- * Created by liuzhao on 2017/9/29.
- * EasyRouter的配置类
- */
 
 public class EasyRouterConfig {
     private static volatile EasyRouterConfig mEasyRouterConfig;
