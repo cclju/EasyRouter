@@ -1,7 +1,6 @@
 apply plugin: 'java-library'
 
-// [Bintray1][step3]
-//apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.novoda.bintray-release'
 
 
 sourceCompatibility = 1.7
@@ -17,17 +16,13 @@ dependencies {
 }
 
 
-// [Bintray1][step4]
-//publish {
-//    artifactId = 'router-compiler'
-//    userOrg = rootProject.userOrg
-//    groupId = rootProject.groupId
-//    uploadName = rootProject.uploadName
-//    publishVersion = rootProject.publishVersion
-//    desc = rootProject.description
-//    website = rootProject.website
-//    licences = rootProject.licences
-//}
+publish {
+    artifactId = 'router-compiler'
+    userOrg = rootProject.userOrg
+    groupId = rootProject.groupId
+    publishVersion = rootProject.publishVersion
+    desc = rootProject.description
+    website = rootProject.website
+    licences = rootProject.licences
+}
 
-// [Bintray2][step3]
-apply from: 'push.gradle'

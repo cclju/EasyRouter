@@ -17,30 +17,12 @@ ext {
             constraintlayout :  'com.android.support.constraint:constraint-layout:1.0.2'
     ]
 
-//    staging = [
-//            versionCode:101,
-//            versionName:'"1.0.1"',
-//
-//    ]
-//    production = [
-//            versionCode:101,
-//            versionName:'"1.0.1"'
-//    ]
-//
-//    isDebugType = false // module
-//    isPrintLog= false
 
-
-    // [Bintray1][step2]
-//    userOrg = 'caijiawei'
-//    groupId = 'com.cjw.router'
-//    uploadName = 'EasyRouter'
-//    publishVersion = '1.2.5'
-//    desc = '简单、稳定、高性能的组件化路由框架'
-//    website = 'https://github.com/cclju/EasyRouter'
-//    licences = ['Apache-2.0']
+    userOrg = 'caijiawei'
+    groupId = 'com.cjw.router'
+    publishVersion = '1.2.5'
+    desc = 'An Easy Base Router For Android'
+    website = 'https://github.com/cclju/EasyRouter'
+    licences = ['Apache-2.0']
 
 }
-
-//project.ext.set("is_debug_type",  "false") //主APP
-//project.ext.set("is_print_log", "false")
